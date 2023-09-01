@@ -6,6 +6,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-int _factorize_num(u_int32_t read_content);
+int _factorize_num(char *read_content);
 
 #endif

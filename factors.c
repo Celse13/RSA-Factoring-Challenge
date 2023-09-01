@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	FILE *read_file;
 	ssize_t _read_size = 1;
 	size_t _buffer_s = 0;
-	u_int32_t value;
+
 
 
 	if (argc != 2)
@@ -29,14 +29,9 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(0);
 	}
-
-	while (_read_size > 0)
+	while ((_read_size = getline(&_file_content, &_buffer_s, read_file)) != -1)
 	{
-		_file_content = NULL;
-		_read_size = getline(&_file_content, &_buffer_s, read_file);
-		value = atoi(_file_content);
-
-		_factorize_num(value);
+		_factorize_num(_file_content);
 
 	}
 	free(_file_content);
